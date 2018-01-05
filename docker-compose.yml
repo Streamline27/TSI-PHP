@@ -1,0 +1,17 @@
+php:
+  image: tiqc/php-apache-mysqli
+  ports:
+    - "8000:80"
+  volumes:
+    - .:/var/www/html
+  links:
+    - db
+db:
+  image: mysql/mysql-server
+  volumes:
+   - /var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=fruits
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=root
